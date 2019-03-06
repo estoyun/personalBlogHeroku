@@ -2,8 +2,8 @@
 
 ### 작품 개요
 	- Likelion third assignment
-  - 기존에 개발한 블로그 Heroku로 배포
-  - [https://safe-brushlands-65126.herokuapp.com/](https://safe-brushlands-65126.herokuapp.com/)
+	- 기존에 개발한 블로그 Heroku로 배포
+	- [https://safe-brushlands-65126.herokuapp.com/](https://safe-brushlands-65126.herokuapp.com/)
 
 
 ### 기술스택
@@ -11,7 +11,7 @@
 	- Python
 	- Bootstrap Theme (https://mdbootstrap.com/)
 	- Plain HTML/CSS/js
-  - Heroku
+	- Heroku
 
 
 #### 스크린샷
