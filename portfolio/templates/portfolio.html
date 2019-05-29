@@ -3,35 +3,54 @@
 {% block content %}
 
 {% load staticfiles %}
-
-<main role="main">
-
-        <section class="jumbotron text-center">
-          <div class="container">
-            <img src="{% static 'siba.jpg' %}" alt="">
-            <h1 class="jumbotron-heading">My portfolio</h1>
-            <p class="lead text-muted">여태까지 내가 만든 작품들입니다.</p>
-          </div>
-        </section>
-  
-        <div class="album py-5 bg-light">
-          <div class="container">
-            <div class="row">
-            {% for portfolio in portfolios.all %}
-              <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <img class="card-img-top" src="{{ portfolio.image.url }}" alt=" Card image cap">
-                  <div class="card-body">
-                    <h4>{{ portfolio.title }}</h4>
-                    <p class="card-text">{{ portfolio.description }}</p>
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
-            </div>
-          </div>
+<div class="jumbotron" style="text-align:center; background-color:white">
+        <!-- 윗 부분 div 영역 -->
+        <div id="div_top" >
+          <button type="button" class="btn btn-primary" onclick="changeImageSize('L')">동물 크게 만들기</button>　
+          <button type="button" class="btn btn-success"  onclick="changeImageSize('S')">동물 작게 만들기</button>　
+          <!-- <button id="rotateL" type="button" class="btn btn-warning">동물 90도 회전</button>　 -->
+          <button type="button" class="btn btn-info" onclick="window.location.reload()">다시 하기</button>　
+          <button type="button" class="btn btn-info"><a id="test" download="image" onclick="convertCanvasToImage()">이미지 다운로드</a></button><br><br>
         </div>
-  
-      </main>
+        <!-- 캔버스 영역 -->
+        <div class="canvas">
+            <canvas id="canvas" ondrop="drop(event)" ondragover="allowDrop(event)" width="500" height="500" style="border: 3px solid gray"/>　
+        </div>
+        <!-- 아랫 부분 div 영역 -->
+        <div id="div_bottom">
+          <!-- 동물 그림 -->
+          <img width=50 height=50 id="img1" name="img1" draggable="true" ondragstart="drag(event)" src="{% static 'pig_big_.png' %}">　
+          <img width=50 height=50  id="img2" name="img2" draggable="true" ondragstart="drag(event)" src="{% static 'rabbit_big_.png' %}">　
+          <img width=50 height=50  id="img10" name="img10" draggable="true" ondragstart="drag(event)" src="{% static 'so_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img11" name="img11" draggable="true" ondragstart="drag(event)" src="{% static 'tajo_big_.png' %}">　　
+          <img width=50 height=50  id="img12" name="img12" draggable="true" ondragstart="drag(event)" src="{% static 'bird_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img13" name="img13" draggable="true" ondragstart="drag(event)" src="{% static 'bird2_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img14" name="img14" draggable="true" ondragstart="drag(event)" src="{% static 'bird3_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img15" name="img15" draggable="true" ondragstart="drag(event)" src="{% static 'elegator_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img16" name="img16" draggable="true" ondragstart="drag(event)" src="{% static 'gazel_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img17" name="img17" draggable="true" ondragstart="drag(event)" src="{% static 'girin_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img18" name="img18" draggable="true" ondragstart="drag(event)" src="{% static 'gobuk_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img19" name="img19" draggable="true" ondragstart="drag(event)" src="{% static 'hama_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img20" name="img20" draggable="true" ondragstart="drag(event)" src="{% static 'hiana_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img21" name="img21" draggable="true" ondragstart="drag(event)" src="{% static 'monkey_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img22" name="img22" draggable="true" ondragstart="drag(event)" src="{% static 'monkey2_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img23" name="img23" draggable="true" ondragstart="drag(event)" src="{% static 'pho_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img24" name="img24" draggable="true" ondragstart="drag(event)" src="{% static 'plamingo_big_.png' %}">　　　　　
+          <img width=50 height=50  id="img25" name="img25" draggable="true" ondragstart="drag(event)" src="{% static 'saja_big_.png' %}">　　　　　
+　　　　　　　　
+          　　
+          <!-- 가족 관계 -->
+          <img id="img27" draggable="true" ondragstart="drag(event)" src="{% static 'me.png' %}">
+          <img id="img3" draggable="true" ondragstart="drag(event)" src="{% static 'dad.png' %}">
+          <img id="img4" draggable="true" ondragstart="drag(event)" src="{% static 'mom.png' %}">
+          <img id="img5" draggable="true" ondragstart="drag(event)" src="{% static 'brother.png' %}">
+          <img id="img6" draggable="true" ondragstart="drag(event)" src="{% static 'grandma.png' %}">
+          <img id="img7" draggable="true" ondragstart="drag(event)" src="{% static 'granpa.png' %}">
+          <img id="img8" draggable="true" ondragstart="drag(event)" src="{% static 'low.png' %}">
+          <img id="img9" draggable="true" ondragstart="drag(event)" src="{% static 'sister.png' %}">
+          <img id="img26" draggable="true" ondragstart="drag(event)" src="{% static 'sister2.png' %}">
+
+
+        </div>
 
 {% endblock %}
